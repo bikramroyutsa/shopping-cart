@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  gap: 16px;
+  background-color: black;
+  padding: 8px;
+}
+.header > a {
+  color: white;
+  text-decoration: none;
+}
+.showCase {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 8px;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding: 8px;
+}
+.productImg {
+  height: 100px;
+  width: auto;
+}
