@@ -11,7 +11,14 @@ function Showcase({ products }) {
                 <img src={p.image} alt={p.title} className="productImg" />
               </div>
               <div className="productPrice">{p.price}</div>
-              <button className="btnSeeDetails">See details</button>
+              <button className="btnSeeDetails">
+                <Link
+                  to={`/product-details/${p.title}`}
+                  state={{ p, products }}
+                >
+                  See details
+                </Link>
+              </button>
               <button className="btnAddToCart">Add to Cart</button>
             </div>
           );

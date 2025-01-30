@@ -10,13 +10,13 @@ function App() {
       .then((json) => {
         setProducts(json);
         console.log("fetching");
+        console.log(json);
       })
       .catch((err) => console.error("Error fetching image:", err));
   }, []);
   return (
     <>
       <Home products={products} />
-
     </>
   );
 }

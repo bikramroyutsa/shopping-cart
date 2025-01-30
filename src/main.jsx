@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Store from "./pages/Store.jsx";
 import Home from "./pages/Home.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
   },
   {
     path: "home",
-    element: <Home />,
+    element: <App/>,
   },
+  {
+    path: "product-details/:title",
+    element: <ProductDetails/>
+  }
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -11,7 +11,7 @@ function Store() {
         .then((res) => res.json())
         .then((json) => {
           setProducts(json);
-          // console.log("fetching");
+          console.log("fetching");
         })
         .catch((err) => console.error("Error fetching products:", err));
     }
@@ -20,7 +20,7 @@ function Store() {
     <>
       <Header products={products} />
       <Showcase products={products} />
-      {console.log(location)}
+      {/* {console.log(location)} */}
     </>
   );
 }
