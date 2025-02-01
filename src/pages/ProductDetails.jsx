@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 function ProductDetails() {
+  const { addToCart } = useOutletContext();
   const location = useLocation();
   const [product, setProduct] = useState(location.state?.p || null);
   return (
@@ -17,7 +18,13 @@ function ProductDetails() {
       <div>price: {product.price}</div>
       <div>items sold: {product.rating.count}</div>
       <div>rating: {product.rating.rate}</div>
-      <button>Add to cart</button>
+      <button
+        onClick={() => {
+          addToCart(product);
+        }}
+      >
+        Add to cart
+      </button>
     </div>
   );
 }

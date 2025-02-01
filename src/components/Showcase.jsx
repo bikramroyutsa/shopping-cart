@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-function Showcase({ products }) {
+function Showcase({ products, addToCart }) {
   return (
     <>
       <div className="showCase">
@@ -7,7 +7,7 @@ function Showcase({ products }) {
           return (
             <div className="product" key={p.id}>
               <div className="productTitle">{p.title}</div>
-              <div className="producImgContainer">
+              <div className="productImgContainer">
                 <img src={p.image} alt={p.title} className="productImg" />
               </div>
               <div className="productPrice">{p.price}</div>
@@ -19,7 +19,14 @@ function Showcase({ products }) {
                   See details
                 </Link>
               </button>
-              <button className="btnAddToCart">Add to Cart</button>
+              <button
+                className="btnAddToCart"
+                onClick={() => {
+                  addToCart(p);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           );
         })}

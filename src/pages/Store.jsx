@@ -1,10 +1,10 @@
 import Showcase from "../components/Showcase";
 import { useOutletContext } from "react-router-dom";
 function Store() {
-  const { products } = useOutletContext();
+  const { products, cartItems, addToCart } = useOutletContext();
   return (
     <>
-      <Showcase products={products} />
+      <Showcase products={products} addToCart={addToCart} />
     </>
   );
 }
