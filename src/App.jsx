@@ -19,12 +19,26 @@ function App() {
     if (!exists) {
       tempCart = [...tempCart, { item: newProduct, count: 1 }];
     }
-    let n = 0;
-    tempCart.forEach((p) => {
-      n = n + p.count;
-    });
-    setCartCount(n);
-    setCartItems(tempCart);
+
+    setCartItems([...tempCart]);
+  }
+  function removeFromCart(existingProduct) {
+    const tempCart = cartItems.filter((p) => p.item.id !== existingProduct.id);
+    setCartItems([...tempCart]);
+  }
+  function decrementCartItem(existingProduct) {
+    for (const p of cartItems) {
+      if (p.item.id == existingProduct.id) {
+        if (p.count == 1) {
+          removeFromCart(existingProduct);
+          break;
+        } else {
+          p.count -= 1;
+          setCartItems([...cartItems]);
+          break;
+        }
+      }
+    }
   }
   useEffect(() => {
     fetch("https://fakestoreapi.com/products?sort=desc")
@@ -35,12 +49,24 @@ function App() {
       .catch((err) => console.error("Error fetching image:", err));
   }, []);
   useEffect(() => {
-    console.log(cartItems);
+    let n = 0;
+    cartItems.forEach((p) => {
+      n = n + p.count;
+    });
+    setCartCount(n);
   }, [cartItems]);
   return (
     <>
       <Header products={products} cartCount={cartCount} />
-      <Outlet context={{ products, cartItems, addToCart }} />
+      <Outlet
+        context={{
+          products,
+          cartItems,
+          addToCart,
+          removeFromCart,
+          decrementCartItem,
+        }}
+      />
     </>
   );
 }

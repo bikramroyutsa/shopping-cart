@@ -6,8 +6,7 @@ function Header({ products, cartCount }) {
       <Link to="/store" state={{ products }}>
         Store
       </Link>
-      <Link to="/cart">Cart</Link>
-      <div>cart length {cartCount}</div>
+      <Link to="/cart">Cart {cartCount}</Link>
     </div>
   );
 }

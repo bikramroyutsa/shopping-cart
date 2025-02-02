@@ -1,7 +1,8 @@
 import { useOutletContext } from "react-router-dom";
 
 function Cart() {
-  const { cartItems } = useOutletContext();
+  const { cartItems, addToCart, removeFromCart, decrementCartItem } =
+    useOutletContext();
   let total = 0;
   cartItems.forEach((p) => {
     total = total + p.item.price * p.count;
@@ -21,7 +22,34 @@ function Cart() {
               </div>
               <div className="cartItemTitle">{p.item.title}</div>
             </div>
-            <div className="cartItemCount">{p.count}</div>
+            <div className="cartItemCount">
+              <button
+                className="incrementCount"
+                onClick={() => {
+                  addToCart(p.item);
+                }}
+              >
+                +
+              </button>
+              {p.count}
+              <button
+                className="decrementCount"
+                onClick={() => {
+                  decrementCartItem(p.item);
+                }}
+              >
+                -
+              </button>
+              <button
+                className="removeItem"
+                onClick={() => {
+                  removeFromCart(p.item);
+                }}
+              >
+                Remove
+              </button>
+            </div>
+
             <div className="cartItemPrice">
               {p.item.price} * {p.count} = {p.item.price * p.count}
             </div>
