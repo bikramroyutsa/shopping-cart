@@ -1,9 +1,11 @@
 import { useLocation, useOutletContext } from "react-router-dom";
 import { useState } from "react";
+import AddToCart from "../components/AddToCart";
 function ProductDetails() {
   const { addToCart } = useOutletContext();
   const location = useLocation();
   const [product, setProduct] = useState(location.state?.p || null);
+
   return (
     <div className="productDetails">
       <div>{product.title}</div>
@@ -18,13 +20,7 @@ function ProductDetails() {
       <div>price: {product.price}</div>
       <div>items sold: {product.rating.count}</div>
       <div>rating: {product.rating.rate}</div>
-      <button
-        onClick={() => {
-          addToCart(product);
-        }}
-      >
-        Add to cart
-      </button>
+      <AddToCart addToCart={addToCart} product={product}/>
     </div>
   );
 }

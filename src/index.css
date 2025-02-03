@@ -58,3 +58,13 @@
   display: flex;
   justify-content: center;
 }
+.increaseDecrease{
+  display: flex;
+  gap: 8px;
+}
+.addToCartContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

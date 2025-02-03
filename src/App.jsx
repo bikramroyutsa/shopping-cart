@@ -6,18 +6,18 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-  function addToCart(newProduct) {
+  function addToCart(newProduct, count = 1) {
     let tempCart = cartItems;
     let exists = false;
     for (const p of tempCart) {
       if (parseInt(p.item.id) == parseInt(newProduct.id)) {
-        p.count += 1;
+        p.count += count;
         exists = true;
         break;
       }
     }
     if (!exists) {
-      tempCart = [...tempCart, { item: newProduct, count: 1 }];
+      tempCart = [...tempCart, { item: newProduct, count: count }];
     }
 
     setCartItems([...tempCart]);

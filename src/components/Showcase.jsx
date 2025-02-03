@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AddToCart from "./AddToCart";
 function Showcase({ products, addToCart }) {
   return (
     <>
@@ -19,14 +20,7 @@ function Showcase({ products, addToCart }) {
                   See details
                 </Link>
               </button>
-              <button
-                className="btnAddToCart"
-                onClick={() => {
-                  addToCart(p);
-                }}
-              >
-                Add to Cart
-              </button>
+              <AddToCart product={p} addToCart={addToCart} />
             </div>
           );
         })}
